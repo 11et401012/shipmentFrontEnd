@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { containerService } from "../services/container.service";
 
 @Component({
   selector: 'app-new-container',
@@ -12,23 +13,15 @@ export class NewContainerComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
-
-  customer: []
-
-  states: []
   errorMessage: string;
   deleteMessageEnabled: boolean;
   operationText = 'Insert';
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private containerService : containerService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      containerName: ['', Validators.required]
     });
   }
   // convenience getter for easy access to form fields
@@ -40,6 +33,10 @@ export class NewContainerComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+    console.log(this.registerForm.value);
+    this.containerService.saveContainer(this.registerForm.value).subscribe((data:any)=>{
+      console.log("data",data);
+    })
 
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
