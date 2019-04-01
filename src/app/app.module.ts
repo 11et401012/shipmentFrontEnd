@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ContainerComponent } from './container/container.component';
 import { ShipmentComponent } from './shipment/shipment.component';
@@ -15,13 +16,15 @@ import { containerService } from './services/container.service';
     ContainerComponent,
     ShipmentComponent,
     NewContainerComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
+
   ],
   providers: [containerService],
   bootstrap: [AppComponent]

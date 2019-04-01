@@ -20,13 +20,16 @@ export class ContainerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fetchAllContainer();
   }
 
   fetchAllContainer() {
     let obj = {
 
     }
-    this.containerService.saveContainer(obj)
+    this.containerService.fetchContainer().subscribe((data: any) => {
+      console.log(data);
+    })
 
   }
   createNewContainer(event) {

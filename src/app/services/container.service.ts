@@ -14,7 +14,12 @@ export class containerService {
   }
 
   saveContainer(saveContainer: any) {
-    return this.http.post(this.Backend_API + 'container/', JSON.stringify(saveContainer), { headers: httpOptions.headers })
+    return this.http.post(`${this.Backend_API}container/`, JSON.stringify(saveContainer), { headers: httpOptions.headers })
 
   }
+
+  fetchContainer() {
+    return this.http.get(`${this.Backend_API}container/`)
+  }
+
 }
