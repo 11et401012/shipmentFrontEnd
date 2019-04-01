@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row card-container">
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class=" card">
+        <div class="card-body">
+          <div class="clearfix">
+
+            <span>+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let con of container;">
+      <div class=" card">
+        <div class="card-header">
+          <a [routerLink]="" class="white">
+            avinash patel
+          </a>
+          <a [routerLink]="['','edit']">
+            <i title="Edit" class="pull-right glyphicon glyphicon-edit edit-icon white"></i>
+          </a>
+        </div>
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="pull-left card-body-left">
+              <a href="#" class="white">
+                <img src="assets/image/sketch.png" class="card-image" />
+              </a>
+            </div>
+            <div class="pull-left card-body-right">
+              <div class="card-body-content">city, state</div>
+              <a [routerLink]="['/customers','orders']">View Orders</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
