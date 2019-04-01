@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { containerService } from "../services/container.service";
+import { async } from 'q';
 //import { fadeInAnimation } from '../animation/index';
 @Component({
   selector: 'app-container',
@@ -11,13 +13,21 @@ import { Router } from '@angular/router';
 export class ContainerComponent implements OnInit {
   container: any[];
   router: Router;
-  constructor(_router: Router) {
+  constructor(_router: Router, private containerService: containerService) {
 
     this.container = [1, 2, 3, 4, 5, 1, 2, 3, 3, 3, 3];
     this.router = _router;
   }
 
   ngOnInit() {
+  }
+
+  fetchAllContainer() {
+    let obj = {
+
+    }
+    this.containerService.saveContainer(obj)
+
   }
   createNewContainer(event) {
     this.router.navigateByUrl('/new-container');
