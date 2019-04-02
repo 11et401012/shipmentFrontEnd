@@ -6,7 +6,8 @@
           <div class="card-body">
             <div class="clearfix">
               <div class="text-center" style="font-size:20px">
-                <p class="mx-auto"> <span>+</span>new container</p>
+                <span>+</span><br>
+                <p class="mx-auto"> new container</p>
               </div>
             </div>
           </div>
@@ -17,24 +18,24 @@
         <div class=" card">
           <div class="card-header">
             <a [routerLink]="" class="white">
-              avinash patel
+              {{con.containerName}}
             </a>
             <span>
               <i class="far fa-edit card-body-right"></i>
-              <i class="far fa-delete card-body-right"></i>
             </span>
             <!-- </a> -->
           </div>
-          <div class="card-body">
+          <div class="card-body" (click)="AddShipment(con,$event)">
             <div class="clearfix">
               <div class="pull-left card-body-left">
-                <a href="#" class="white">
+                <!-- <a href="#" class="white">
                   <img src="assets/image/sketch.png" class="card-image" />
-                </a>
+                </a> -->
               </div>
               <div class="pull-left card-body-right">
-                <div class="card-body-content">city, state</div>
-                <a [routerLink]="['/customers','orders']">View Orders</a>
+                <div class="card-body-content">
+                  <span>Status:{{con.containerStatus.containerStatus}}</span>
+                </div>
               </div>
             </div>
           </div>

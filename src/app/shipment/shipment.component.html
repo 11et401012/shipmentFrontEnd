@@ -1,3 +1,26 @@
-<p>
-  shipment works!
-</p>
+<div class="container">
+  <h2>Striped Rows</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Shipment Name</th>
+        <th>Shipment Weight</th>
+        <th>Shipment Volume</th>
+        <th>Container Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ship of Shipment">
+        <td>{{ship.shipName}}</td>
+        <td>{{ship.shipWeight}}</td>
+        <td>{{ship.shipValume}}</td>
+        <td *ngIf="ship.Container">{{ship.Container.containerName}}</td>
+        <td><i class="fa fa-edit"></i></td>
+        <td><i class="fa fa-trash" aria-hidden="true" (click)="deleteshipment($event,ship)"></i></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

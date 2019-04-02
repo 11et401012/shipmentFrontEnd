@@ -1,0 +1,41 @@
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Add New Shipment</h3>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Shipment Name</label>
+            <input type="text" formControlName="shipName" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.shipName.errors }" />
+            <div *ngIf="submitted && f.shipName.errors" class="invalid-feedback">
+              <div *ngIf="f.shipName.errors.required">containe Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Shipment Valume</label>
+            <input type="number" formControlName="shipValume" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.shipValume.errors }" />
+            <div *ngIf="submitted && f.shipValume.errors" class="invalid-feedback">
+              <div *ngIf="f.shipValume.errors.required">shipValume required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Shipment Weight</label>
+            <input type="number" formControlName="shipWeight" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.shipWeight.errors }" />
+            <div *ngIf="submitted && f.shipWeight.errors" class="invalid-feedback">
+              <div *ngIf="f.shipWeight.errors.required">shipWeight is required</div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <button class="btn btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

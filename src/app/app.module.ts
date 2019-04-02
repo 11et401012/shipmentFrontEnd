@@ -10,6 +10,7 @@ import { ShipmentComponent } from './shipment/shipment.component';
 import { NewContainerComponent } from './new-container/new-container.component';
 import { HeaderComponent } from './header/header.component';
 import { containerService } from './services/container.service';
+import { NewShipmentComponent } from './new-shipment/new-shipment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { containerService } from './services/container.service';
     ShipmentComponent,
     NewContainerComponent,
     HeaderComponent,
+    NewShipmentComponent,
   ],
   imports: [
     BrowserModule,

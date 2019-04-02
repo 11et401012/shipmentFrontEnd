@@ -13,13 +13,21 @@ export class containerService {
     this.Backend_API = AppSettings.Backend_API;
   }
 
-  saveContainer(saveContainer: any) {
-    return this.http.post(`${this.Backend_API}container/`, JSON.stringify(saveContainer), { headers: httpOptions.headers })
+  saveContainer(Container: any) {
+    return this.http.post(`${this.Backend_API}container/`, JSON.stringify(Container), { headers: httpOptions.headers })
 
   }
 
+  saveShipment(shipment: any) {
+    return this.http.post(`${this.Backend_API}shipment`, JSON.stringify(shipment), { headers: httpOptions.headers })
+
+  }
   fetchContainer() {
-    return this.http.get(`${this.Backend_API}container/`)
+    return this.http.get(`${this.Backend_API}container`)
+  }
+
+  fetchShipment() {
+    return this.http.get(`${this.Backend_API}shipment`)
   }
 
 }

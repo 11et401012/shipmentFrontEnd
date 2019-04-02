@@ -5,12 +5,11 @@ import { NgForm } from '@angular/forms';
 import { containerService } from "../services/container.service";
 
 @Component({
-  selector: 'app-new-container',
-  templateUrl: './new-container.component.html',
-  styleUrls: ['./new-container.component.scss']
+  selector: 'app-new-shipment',
+  templateUrl: './new-shipment.component.html',
+  styleUrls: ['./new-shipment.component.scss']
 })
-export class NewContainerComponent implements OnInit {
-
+export class NewShipmentComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   errorMessage: string;
@@ -19,11 +18,17 @@ export class NewContainerComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private Router: Router, private containerService: containerService) { }
 
+
+
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      containerName: ['', Validators.required]
+      shipName: ['', Validators.required],
+      shipWeight: ['', Validators.required],
+      shipValume: ['', Validators.required],
+      containerId: [localStorage.getItem('containerId'), Validators.required]
     });
   }
+
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
   onSubmit() {
@@ -34,13 +39,13 @@ export class NewContainerComponent implements OnInit {
       return;
     }
     console.log(this.registerForm.value);
-    this.containerService.saveContainer(this.registerForm.value).subscribe((data: any) => {
+    this.containerService.saveShipment(this.registerForm.value).subscribe((data: any) => {
       console.log("data", data);
       if (data['success']) {
-        this.Router.navigateByUrl('/');
+        this.Router.navigateByUrl('/shipment');
       }
     })
 
   }
-}
 
+}

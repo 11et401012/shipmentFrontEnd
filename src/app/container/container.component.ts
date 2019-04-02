@@ -15,7 +15,6 @@ export class ContainerComponent implements OnInit {
   router: Router;
   constructor(_router: Router, private containerService: containerService) {
 
-    this.container = [1, 2, 3, 4, 5, 1, 2, 3, 3, 3, 3];
     this.router = _router;
   }
 
@@ -24,15 +23,21 @@ export class ContainerComponent implements OnInit {
   }
 
   fetchAllContainer() {
-    let obj = {
 
-    }
     this.containerService.fetchContainer().subscribe((data: any) => {
-      console.log(data);
+      if (data['success']) {
+        this.container = data.container;
+      }
     })
 
   }
   createNewContainer(event) {
     this.router.navigateByUrl('/new-container');
+  }
+
+  AddShipment(container, event) {
+    localStorage.setItem('containerId', container._id)
+    this.router.navigateByUrl('/new-shipment');
+
   }
 }
