@@ -22,6 +22,15 @@ export class containerService {
     return this.http.post(`${this.Backend_API}shipment`, JSON.stringify(shipment), { headers: httpOptions.headers })
 
   }
+  deleteShipment(shipmentId: any) {
+    return this.http.delete(`${this.Backend_API}shipment/?shipmentId=${shipmentId}`)
+
+  }
+  updateContainerStatus(status: any, Id: any) {
+    return this.http.put(`${this.Backend_API}container/?containerId=${Id}`, JSON.stringify(status), { headers: httpOptions.headers })
+
+  }
+
   fetchContainer() {
     return this.http.get(`${this.Backend_API}container`)
   }

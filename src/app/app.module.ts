@@ -11,6 +11,8 @@ import { NewContainerComponent } from './new-container/new-container.component';
 import { HeaderComponent } from './header/header.component';
 import { containerService } from './services/container.service';
 import { NewShipmentComponent } from './new-shipment/new-shipment.component';
+import { EditContainerComponent } from './edit-container/edit-container.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,12 +21,14 @@ import { NewShipmentComponent } from './new-shipment/new-shipment.component';
     NewContainerComponent,
     HeaderComponent,
     NewShipmentComponent,
+    EditContainerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule
 
   ],

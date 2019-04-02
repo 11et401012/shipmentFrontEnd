@@ -1,24 +1,26 @@
 <!-- main app container -->
-<div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h3>Add  New Container</h3>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label>Container Name</label>
-            <input type="text" formControlName="containerName" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.containerName.errors }" />
-            <div *ngIf="submitted && f.containerName.errors" class="invalid-feedback">
-              <div *ngIf="f.containerName.errors.required">containe Name is required</div>
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h3>Add New Container</h3>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>Container Name</label>
+              <input type="text" formControlName="containerName" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.containerName.errors }" />
+              <div *ngIf="submitted && f.containerName.errors" class="invalid-feedback">
+                <div *ngIf="f.containerName.errors.required">containe Name is required</div>
+              </div>
             </div>
-          </div>
-          
-          
-          <div class="form-group">
-            <button class="btn btn-primary">Register</button>
-          </div>
-        </form>
+
+
+            <div class="form-group">
+              <button class="btn btn-primary">Register</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

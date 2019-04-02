@@ -27,7 +27,15 @@ export class ShipmentComponent implements OnInit {
   }
 
   deleteshipment(event: any, ship: any) {
-
+    console.log("ok");
+    this.containerService.deleteShipment(ship._id).subscribe((data: any) => {
+      if (data['success']) {
+        // this.Shipment = data.shipment;
+        let index = this.Shipment.findIndex(x => x._id == ship._id);
+        console.log(index);
+        this.Shipment.splice(index, 1);
+      }
+    })
   }
 
 }

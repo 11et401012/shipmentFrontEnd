@@ -1,43 +1,46 @@
-<div class="customers view indent">
+<div class="customers view indent" (clickOutside)="onClickOutside($event)">
   <div class="container">
     <div class="row card-container">
       <div class="col-sm-6 col-md-4 col-lg-3" (click)="createNewContainer($event)">
         <div class=" card">
           <div class="card-body">
-            <div class="clearfix">
-              <div class="text-center" style="font-size:20px">
-                <span>+</span><br>
-                <p class="mx-auto"> new container</p>
-              </div>
+            <div class="text-center" style="font-size:20px">
+              <span>+</span><br>
+              <p class="mx-auto"> new container</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let con of container;">
-        <div class=" card">
-          <div class="card-header">
-            <a [routerLink]="" class="white">
-              {{con.containerName}}
-            </a>
-            <span>
-              <i class="far fa-edit card-body-right"></i>
-            </span>
-            <!-- </a> -->
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let con of container;let i=index">
+        <div class="card">
+          <div class="card-header card-color">
+            <div class="d-flex align-items-center justify-content-between">
+              <a [routerLink]="" class="white">
+                {{con.containerName}}
+              </a>
+              <span>
+              </span>
+              <div class="dropdown">
+                <i class='fa fa-ellipsis-v' (click)="active=!active" onclick="myFunction()"></i>
+
+
+              </div>
+            </div> <!-- </a> -->
           </div>
           <div class="card-body" (click)="AddShipment(con,$event)">
-            <div class="clearfix">
-              <div class="pull-left card-body-left">
-                <!-- <a href="#" class="white">
-                  <img src="assets/image/sketch.png" class="card-image" />
-                </a> -->
-              </div>
-              <div class="pull-left card-body-right">
-                <div class="card-body-content">
-                  <span>Status:{{con.containerStatus.containerStatus}}</span>
-                </div>
-              </div>
+            <div class="d-flex flex-column">
+              <b>Volume fill:{{con.containerVolumefilled|number}}</b>
+              <b>Weight fill:{{con.containerWeightfilled|number}}</b>
             </div>
+          </div>
+          <div class="card-footer">
+            <input type="radio" value="draft" name="status{{i}}"
+              [checked]="con.containerStatus.containerStatus==='draft'" (click)="updateStatus($event,con)"> Draft
+            <input type="radio" value="transit" name="status{{i}}"
+              [checked]="con.containerStatus.containerStatus==='transit'" (click)="updateStatus($event,con)">Transit
+            <input type="radio" value="completed" name="status{{i}}"
+              [checked]="con.containerStatus.containerStatus==='completed'" (click)="updateStatus($event,con)">Completed
           </div>
         </div>
       </div>
